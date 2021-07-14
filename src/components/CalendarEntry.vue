@@ -7,6 +7,12 @@
             <h5>Neuer Termin für: <strong>{{ getNameOfActiveDay }}</strong></h5>
           </div>
           <div class="card-body">
+            <div
+              class="alert alert-danger"
+              v-show="error"
+            >
+              Der Titel darf nicht leer sein.
+            </div>
             <input
               type="text"
               class="form-control"
@@ -46,7 +52,8 @@ import { store } from '../store';
     data() {
       return {
         eventColor: 'primary',
-        eventTitle: ''
+        eventTitle: '',
+        error: false
       }
     },
     computed: {
@@ -62,9 +69,11 @@ import { store } from '../store';
         this.eventColor = color;
       },
       storeEvent: function (eventTitle, eventColor) {
+        if (eventTitle === '') return this.error = true;
         store.storeEvent(eventTitle, eventColor);
         this.eventTitle = '';
         this.eventColor = 'primary'
+        this.error = false;
       }
     }
   }
