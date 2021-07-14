@@ -11,6 +11,7 @@
               type="text"
               class="form-control"
               placeholder="Neuer Termin"
+              v-model="eventTitle"
             >
             <div class="mt-3 text-center">
               <span
@@ -24,7 +25,12 @@
               </span>
             </div>
             <br>
-            <button class="btn bg-vue2 w-100">Eintragen</button>
+            <button
+              class="btn bg-vue2 w-100"
+              @click="storeEvent(eventTitle, eventColor)"
+            >
+              Eintragen
+            </button>
           </div>
         </div>
       </div>
@@ -39,7 +45,8 @@ import { store } from '../store';
     name: 'CalendarEntry',
     data() {
       return {
-        eventColor: 'primary'
+        eventColor: 'primary',
+        eventTitle: ''
       }
     },
     computed: {
@@ -53,6 +60,11 @@ import { store } from '../store';
     methods: {
       changeEventColor: function (color) {
         this.eventColor = color;
+      },
+      storeEvent: function (eventTitle, eventColor) {
+        store.storeEvent(eventTitle, eventColor);
+        this.eventTitle = '';
+        this.eventColor = 'primary'
       }
     }
   }
