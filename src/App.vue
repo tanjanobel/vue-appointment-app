@@ -3,33 +3,6 @@
 
     <CalendarWeek />
 
-    <div id="calendar-week">
-      <div class="container fluid mt-5">
-        <div class="row">
-          <div class="col-12">
-            <div class="card-group">
-              <!-- Tage -->
-              <div class="card">
-                <div class="card-header text-center bg-vue">
-                  <strong>Montag</strong>
-                </div>
-                <div class="card-body">
-                  <div>1</div>
-                  <div class="alert alert-success text-center">
-                    <div>Müll rausbringen</div>
-                    <div>
-                      <i class="fas fa-edit me-2"></i>
-                      <i class="far fa-trash-alt"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div id="calendar-entry">
       <div class="container mt-5">
         <div class="row">

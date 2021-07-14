@@ -5,21 +5,25 @@
     </div>
     <div class="card-body">
       <div>{{ day.id }}</div>
-      <div class="alert alert-success text-center">
-        <div>Müll rausbringen</div>
-        <div>
-          <i class="fas fa-edit me-2"></i>
-          <i class="far fa-trash-alt"></i>
-        </div>
-      </div>
+      <CalenderEvent
+        v-for="(event, index) in day.events"
+        :key="index"
+        :event="event"
+        :day="day"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import CalenderEvent from './CalendarEvent';
+
 export default {
   name: 'CalendarDay',
-  props: ['day']
+  props: ['day'],
+  components: {
+    CalenderEvent
+  }
 }
 </script>
 
