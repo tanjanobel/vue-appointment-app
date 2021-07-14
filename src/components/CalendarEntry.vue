@@ -4,7 +4,7 @@
       <div class="col-6 offset-3">
         <div class="card">
           <div class="card-header text-center bg-vue">
-            <h5>Neuer Termin für: <strong>Dienstag</strong></h5>
+            <h5>Neuer Termin für: <strong>{{ getNameOfActiveDay }}</strong></h5>
           </div>
           <div class="card-body">
             <input
@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import { store } from '../store';
+
   export default {
     name: 'CalendarEntry',
     data() {
@@ -43,6 +45,9 @@
     computed: {
       getBorderColor() {
         return 'border border-' +this.eventColor;
+      },
+      getNameOfActiveDay() {
+        return store.getActiveDay().fullname;
       }
     },
     methods: {

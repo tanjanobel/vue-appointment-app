@@ -1,6 +1,10 @@
 <template>
   <div class="card">
-    <div class="card-header text-center bg-vue">
+    <div
+      class="card-header text-center bg-vue"
+      style="cursor:pointer;"
+      @click="setActiveDay(day.id)"
+    >
       <strong>{{ day.fullname }}</strong>
     </div>
     <div class="card-body">
@@ -16,6 +20,7 @@
 </template>
 
 <script>
+import { store } from '../store';
 import CalenderEvent from './CalendarEvent';
 
 export default {
@@ -23,6 +28,11 @@ export default {
   props: ['day'],
   components: {
     CalenderEvent
+  },
+  methods: {
+    setActiveDay(dayId) {
+      store.setActiveDay(dayId);
+    }
   }
 }
 </script>
