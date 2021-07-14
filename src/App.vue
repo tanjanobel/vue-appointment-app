@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+
+    <CalendarWeek />
+
     <div id="calendar-week">
       <div class="container fluid mt-5">
         <div class="row">
@@ -65,18 +68,17 @@
 </template>
 
 <script>
+import CalendarWeek from "./components/CalendarWeek";
 
 export default {
   name: 'App',
+  components: {
+    CalendarWeek
+  }
 }
 </script>
 
 <style scoped>
-  .bg-vue {
-    background-color: rgb(52, 73, 94);
-    color: #fff;
-  }
-
   .bg-vue2 {
     background-color: rgb(65, 184, 131);
   }
