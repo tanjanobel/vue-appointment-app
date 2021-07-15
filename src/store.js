@@ -28,5 +28,11 @@ export const store = {
                 event.edit = false;
             });
         });
+    },
+    updateEvent(dayId, oldEventTitle, newEventTitle) {
+        const dayObj = this.state.calendarWeekData.find(day => day.id === dayId);
+        const eventObj = dayObj.events.find(event => event.title === oldEventTitle);
+        eventObj.title = newEventTitle;
+        eventObj.edit = false;
     }
 }

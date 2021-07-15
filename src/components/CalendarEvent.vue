@@ -23,9 +23,13 @@
         type="text"
         class="form-control"
         :placeholder="event.title"
+        v-model="newEventTitle"
       >
       <br>
-      <i class="fas fa-check"></i>
+      <i
+        class="fas fa-check"
+        @click="updateEvent(day.id, event.title, newEventTitle)"
+      ></i>
     </div>
 
   </div>
@@ -36,6 +40,11 @@ import { store } from '../store.js'
 export default {
   name: 'CalenderEvent',
   props: ['event', 'day'],
+  data() {
+    return {
+      newEventTitle: ''
+    }
+  },
   computed: {
     getEventColor() {
       return 'alert-' +this.event.color;
@@ -44,6 +53,11 @@ export default {
   methods: {
     editEvent(dayId, eventTitle) {
       store.editEvent(dayId, eventTitle);
+    },
+    updateEvent(dayId, oldEventTitle, newEventTitle) {
+      if (newEventTitle === '') newEventTitle = oldEventTitle;
+      store.updateEvent(dayId, oldEventTitle, newEventTitle);
+      this.newEventTitle = '';
     }
   }
 }
