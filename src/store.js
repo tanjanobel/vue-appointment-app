@@ -15,5 +15,18 @@ export const store = {
     storeEvent(eventTitle, eventColor) {
         const activeDay = this.getActiveDay();
         activeDay.events.push( { 'title': eventTitle, 'edit': false,'color': eventColor } );
+    },
+    editEvent(dayId, eventTitle) {
+        this.resetEditOfAllEvents();
+        const dayObj = this.state.calendarWeekData.find(day => day.id === dayId);
+        const eventObj = dayObj.events.find(event => event.title === eventTitle);
+        eventObj.edit = true;
+    },
+    resetEditOfAllEvents() {
+        this.state.calendarWeekData.map(dayObj => {
+            dayObj.events.map(event => {
+                event.edit = false;
+            });
+        });
     }
 }
