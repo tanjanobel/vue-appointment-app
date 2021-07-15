@@ -14,6 +14,7 @@
         <i
           class="far fa-trash-alt"
           style="cursor:pointer;"
+          @click="deleteEvent(day.id, event.title)"
         ></i>
       </div>
     </div>
@@ -58,6 +59,9 @@ export default {
       if (newEventTitle === '') newEventTitle = oldEventTitle;
       store.updateEvent(dayId, oldEventTitle, newEventTitle);
       this.newEventTitle = '';
+    },
+    deleteEvent(dayId, eventTitle) {
+      store.deleteEvent(dayId, eventTitle);
     }
   }
 }
